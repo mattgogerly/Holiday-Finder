@@ -50,7 +50,9 @@ public class HolidayFinderSpeechlet implements Speechlet {
         	return getWeatherDestinationResponse();
         } else if ("AMAZON.HelpIntent".equals(intentName)) {
             return getHelpResponse();
-        } else if ("AMAZON.StopIntent".equals(intentName)){
+        } else if ("AMAZON.StopIntent".equals(intentName)) {
+        	return getGoodbyeResponse();
+        } else if ("AMAZON.CancelIntent".equals(intentName)) {
         	return getGoodbyeResponse();
         } else {
             throw new SpeechletException("Invalid Intent");
@@ -67,16 +69,13 @@ public class HolidayFinderSpeechlet implements Speechlet {
 	        String speechText = "Not sure where to go on holiday? Try asking me for a destination,"
 	        		+ "and if you want specify your preferred weather!";
 
-	        // Create the Simple card content.
 	        SimpleCard card = new SimpleCard();
 	        card.setTitle("Holiday Finder");
 	        card.setContent(speechText);
 
-	        // Create the plain text output.
 	        PlainTextOutputSpeech speech = new PlainTextOutputSpeech();
 	        speech.setText(speechText);
 
-	        // Create reprompt
 	        Reprompt reprompt = new Reprompt();
 	        reprompt.setOutputSpeech(speech);
 
