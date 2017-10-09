@@ -50,6 +50,8 @@ public class HolidayFinderSpeechlet implements Speechlet {
         	return getWeatherDestinationResponse();
         } else if ("AMAZON.HelpIntent".equals(intentName)) {
             return getHelpResponse();
+        } else if ("AMAZON.StopIntent".equals(intentName)){
+        	return getGoodbyeResponse();
         } else {
             throw new SpeechletException("Invalid Intent");
         }
@@ -59,7 +61,6 @@ public class HolidayFinderSpeechlet implements Speechlet {
     public void onSessionEnded(final SessionEndedRequest request, final Session session)
             throws SpeechletException {
 		
-        // any cleanup logic goes here
  	}
 	
 	 private SpeechletResponse getHelpResponse() {
@@ -87,6 +88,13 @@ public class HolidayFinderSpeechlet implements Speechlet {
 		 
 		 PlainTextOutputSpeech speech = new PlainTextOutputSpeech();
 		 speech.setText("You could visit " + country + "!");
+		 
+		 return SpeechletResponse.newTellResponse(speech);
+	 }
+	 
+	 private SpeechletResponse getGoodbyeResponse() {
+		 PlainTextOutputSpeech speech = new PlainTextOutputSpeech();
+		 speech.setText("I hope you found a promising destination!");
 		 
 		 return SpeechletResponse.newTellResponse(speech);
 	 }
