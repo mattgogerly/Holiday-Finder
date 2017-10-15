@@ -1,2 +1,3 @@
 
 src/main/java/com/amazonaws/lambda/holidayfinder/HolidayFinderSpeechletRequestStreamHandler.java
+src/main/java/com/amazonaws/lambda/holidayfinder/HolidayFinderSpeechletRequestStreamHandler.java
